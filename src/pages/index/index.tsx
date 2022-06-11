@@ -1,20 +1,31 @@
+import Taro from '@tarojs/taro'
 import { Component } from 'react'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 export default class Index extends Component {
 
-  componentWillMount () { }
+  componentWillMount() { }
 
-  componentDidMount () { }
+  componentDidMount() {
+    Taro.login({
+      success: function (res) {
+        if (res.code) {
+          console.log('%c AT-🥝 res.code 🥝-14', 'font-size:13px; background:#de4307; color:#f6d04d;', res.code)
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+  }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
-  render () {
+  render() {
     return (
       <View className='index'>
         <Text>Hello world!</Text>
